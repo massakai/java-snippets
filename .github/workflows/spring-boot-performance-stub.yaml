@@ -38,7 +38,7 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.14.3
+          gradle-version: 9.5.1
 
       - name: Test
         run: gradle test -PspringBootVersion=${{ matrix.spring-boot }}
