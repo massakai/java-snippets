@@ -1,0 +1,11 @@
+stub:
+  responses:
+    status: 200
+    body: '{"result":"ok"}'
+  delays:
+    - weight: 90
+      millis: 100
+    - weight: 9
+      millis: 500
+    - weight: 1
+      millis: 2000
