@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(prefix = "batch.import", name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "startup.import", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ImportApplicationRunner implements ApplicationRunner {
 
     private final ImportService importService;
