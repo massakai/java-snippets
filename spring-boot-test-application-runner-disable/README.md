@@ -12,6 +12,6 @@
 ## Run Tests
 
 ```bash
-gradle test -PspringBootVersion=3.5.14
-gradle test -PspringBootVersion=4.0.6
+./gradlew test -PspringBootVersion=3.5.14
+./gradlew test -PspringBootVersion=4.0.6
 ```
