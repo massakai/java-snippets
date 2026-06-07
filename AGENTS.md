@@ -46,6 +46,14 @@ AI エージェントや共同作業者が迷わないように、まずここ�
 - CIで確認しているJava、Gradle、Spring BootのバージョンはREADMEまたは記事側で参照できるようにする
 - CI対象にしないサンプルは、READMEに理由と手動確認手順を書く
 
+## Pull Request
+
+- Pull Request のタイトルと本文は原則として日本語で書く
+- Pull Request のタイトルに `[codex]` は付けない
+- Codex で作成した Pull Request には `codex` ラベルを付ける
+- Pull Request は原則 Draft で作成し、レビュー可能になった段階で Ready for review にする
+- Pull Request の本文には、少なくとも変更概要、背景、確認内容を書く
+
 ## 編集時の注意
 
 - 既存サンプルの目的と無関係な整形や大規模な並べ替えは避ける
