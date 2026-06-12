@@ -2,6 +2,8 @@ name: configuration-properties-demo
 
 on:
   push:
+    branches:
+      - master
     paths:
       - '.github/workflows/configuration-properties-demo.yaml'
       - 'configuration-properties-demo/**'
