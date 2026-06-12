@@ -1,20 +1,18 @@
 # Configuration Properties Demo
 
-Spring Boot 2.4.4 で `@ConfigurationProperties` を使ったネストした設定値のバインドを確認するサンプルです。
+`@ConfigurationProperties` でネストした設定値を型安全にバインドし、Bean Validation で検証するサンプルです。
 
-## What This Sample Verifies
+## 内容
 
-- `demo.hogeApiConfig` と `demo.fugaApiConfig` を `DemoProperties` にバインドできる
-- `Duration` を含む設定値を型安全に扱える
-- テストでプロパティ値の読み取り結果を確認できる
+- `DemoProperties` と `APIConfig` を record で定義する
+- `@ConfigurationPropertiesScan` で設定クラスを自動検出する
+- URL と `Duration` のバインドをテストで確認する
 
 ## Run Tests
 
 ```bash
-./gradlew test
+./gradlew test -PspringBootVersion=3.5.14
+./gradlew test -PspringBootVersion=4.0.6
 ```
 
-## Notes
-
-- Spring Boot バージョンは `build.gradle` で `2.4.4` に固定しています
-- GitHub Actions は未設定です。必要になったら workflow を追加してください
+GitHub Actionsでは、Gradle wrapper 9.5.1を使ってSpring Boot 3.5.14 / 4.0.6 と Java 17 / 21 / 25 の組み合わせでテストします。

@@ -1,9 +1,5 @@
 demo:
-  hogeApiConfig:
+  api-config:
     url: http://localhost/hoge
-    connectionTimeout: 100ms
-    readTimeout: 400ms
-  fugaApiConfig:
-    url: http://localhost/fuga
     connectionTimeout: 100ms
     readTimeout: 400ms

@@ -30,10 +30,10 @@ class DemoPropertiesTest {
   @Test
   @DisplayName("APIConfigの値がアプリケーションプロパティから読み込まれる")
   void getApiConfig() throws MalformedURLException {
-    APIConfig apiConfig = demoProperties.getApiConfig();
+    APIConfig apiConfig = demoProperties.apiConfig();
 
-    assertEquals(new URL("http://localhost/hoge"), apiConfig.getUrl());
-    assertEquals(Duration.ofMillis(100), apiConfig.getConnectionTimeout());
-    assertEquals(Duration.ofMillis(200), apiConfig.getReadTimeout());
+    assertEquals(new URL("http://localhost/hoge"), apiConfig.url());
+    assertEquals(Duration.ofMillis(100), apiConfig.connectionTimeout());
+    assertEquals(Duration.ofMillis(200), apiConfig.readTimeout());
   }
 }
