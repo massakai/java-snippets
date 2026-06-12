@@ -2,28 +2,25 @@
 
 ## Purpose
 
-- Spring Boot 2.4.4 の `@ConfigurationProperties` バインド挙動を確認する
+- `@ConfigurationProperties` によるネストした設定値のバインドと検証を確認する
 
 ## Test Focus
 
-- `DemoProperties` に `hogeApiConfig` と `fugaApiConfig` が正しく束縛されること
-- `connectionTimeout` と `readTimeout` が `Duration` として読めること
+- `DemoProperties` と `APIConfig` に URL と `Duration` を正しく束縛できること
+- Bean Validation を有効にしたままアプリケーションコンテキストを起動できること
 
 ## Run Commands
 
 ```bash
-./gradlew test
+./gradlew test -PspringBootVersion=3.5.14
+./gradlew test -PspringBootVersion=4.0.6
 ```
-
-## Related Article
-
-- 未整理。記事を追加したらここか `README.md` に追記する
 
 ## Naming Consistency Notes
 
-- 記事やメモでは `DemoProperties`、`APIConfig`、`demo.hogeApiConfig`、`demo.fugaApiConfig` の表記ずれに注意する
-- Spring Boot バージョンは `2.4.4` 固定として扱う
+- 記事やメモでは `DemoProperties`、`APIConfig`、`demo.api-config` の表記ずれに注意する
+- Spring Boot の確認対象は `3.5.14` と `4.0.6`
 
 ## CI
 
-- 現時点では GitHub Actions の対象外
+- GitHub Actions で Spring Boot `3.5.14` / `4.0.6` と Java `17` / `21` / `25` の組み合わせをテストする
