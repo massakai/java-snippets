@@ -55,6 +55,25 @@ AI エージェントや共同作業者が迷わないように、まずここ�
 - CIで確認しているJava、Gradle、Spring BootのバージョンはREADMEまたは記事側で参照できるようにする
 - CI対象にしないサンプルは、READMEに理由と手動確認手順を書く
 
+## Git ベースライン
+
+- ブランチ戦略は GitHub Flow とし、`master` をデフォルトブランチとして扱う
+- 作業開始前に `git fetch origin master` を実行し、`origin/master` が最新か確認する
+- 作業開始前に `git status --branch` と `git show -s --format=... HEAD origin/master` などで、現在の作業位置と `origin/master` の差を確認する
+- 作業は最新の `origin/master` を基点に作業ブランチを作って始める
+- detached HEAD や古いローカルブランチを基点にしたまま編集を始めない
+- ローカル `master` はリモート取り込み専用とし、直接コミットしない
+- `master` では作業せず、変更は必ず作業ブランチで行う
+- デフォルトブランチへの直接 push は行わず、必ず Pull Request 経由で取り込む
+- サンプルコード変更と、リポジトリ全体の workflow / 運用変更は、レビュー観点が異なるため原則として別ブランチ・別 Pull Request に分ける
+
+### 理由
+
+- 古い `master` や detached HEAD を基点にすると、最新 `master` 取り込み後に差分の見直しや載せ替えが必要になりやすい
+- 作業開始前に基点を揃えることで、レビュー時の差分が素直になり、余計なコンフリクトや混線を減らせる
+- `master` を取り込み専用にすると、ローカル作業とデフォルトブランチの状態が分離され、意図しないコミットや push を防ぎやすい
+- workflow や共通運用変更をサンプル修正と分けると、コードレビューで見る観点を切り分けやすい
+
 ## Pull Request
 
 - Pull Request のタイトルと本文は原則として日本語で書く
