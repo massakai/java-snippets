@@ -2,6 +2,8 @@ name: spring-boot-test-application-runner-disable
 
 on:
   push:
+    branches:
+      - master
     paths:
       - '.github/workflows/spring-boot-test-application-runner-disable.yaml'
       - 'spring-boot-test-application-runner-disable/**'

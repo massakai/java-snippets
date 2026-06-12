@@ -2,6 +2,8 @@ name: spring-boot-performance-stub
 
 on:
   push:
+    branches:
+      - master
     paths:
       - '.github/workflows/spring-boot-performance-stub.yaml'
       - 'spring-boot-performance-stub/**'
