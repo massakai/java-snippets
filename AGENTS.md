@@ -107,6 +107,18 @@ AI エージェントや共同作業者が迷わないように、まずここ�
 - Pull Request は原則 Draft で作成し、レビュー可能になった段階で Ready for review にする
 - Pull Request の本文には、少なくとも変更概要、背景、確認内容を書く
 
+### gh の運用
+
+- `gh pr create` や `gh pr edit` で本文を渡すときは、原則として `--body-file` を使う
+- バッククォートや角括弧など、shell 展開の影響を受けやすい記号を含む本文をインライン文字列で渡さない
+- `gh pr create --draft` 実行後は、`gh pr view --json isDraft,body` などで Draft 状態と本文を確認する
+- 既存 Pull Request の本文を `gh` で更新した場合も、意図どおり反映されたか確認する
+
+### 理由
+
+- Pull Request 本文は Markdown 記法を含みやすく、shell 経由でインライン指定すると意図せず展開されることがある
+- Pull Request の本文や Draft 状態は、コマンド指定どおりに見えても結果がずれることがあるため、作成・更新後の確認が必要
+
 ## 編集時の注意
 
 - 既存サンプルの目的と無関係な整形や大規模な並べ替えは避ける
