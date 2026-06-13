@@ -54,6 +54,11 @@ AI エージェントや共同作業者が迷わないように、まずここ�
 - workflow ファイル名も `.yaml` を使う
 - CIで確認しているJava、Gradle、Spring BootのバージョンはREADMEまたは記事側で参照できるようにする
 - CI対象にしないサンプルは、READMEに理由と手動確認手順を書く
+- Pull Request の検証は原則として `pull_request` イベントで行う
+- `push` イベントでの実行は原則として `master` への push のみに限定する
+- `push` と `pull_request` を併用する workflow では、同一コミットに対する重複実行が起きないか確認する
+- matrix を追加・変更する場合は、イベント数 × Java バージョン数 × Spring Boot バージョン数 などで実行数を見積もる
+- workflow 追加や matrix 拡張を行う場合は、チェック数や実行時間が過剰になっていないか Pull Request 上で確認する
 
 ## Git ベースライン
 
