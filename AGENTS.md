@@ -136,6 +136,8 @@ AI エージェントや共同作業者が迷わないように、まずここ�
 - Codex で作成した Pull Request には `codex` ラベルを付ける
 - Pull Request は原則 Draft で作成し、レビュー可能になった段階で Ready for review にする
 - Pull Request の本文には、少なくとも変更概要、背景、確認内容を書く
+- 既存の Pull Request に追加コミットを積んで、スコープや確認内容が変わった場合は、Pull Request 本文の `変更概要`、`背景`、`確認内容` も更新する
+- 既存の Pull Request にレビュー観点を増やす変更を追加した場合は、本文にその追加内容が読み取れる状態を保つ
 
 ### gh の運用
 
