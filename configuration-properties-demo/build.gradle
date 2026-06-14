@@ -15,7 +15,7 @@ repositories {
     mavenCentral()
 }
 
-def springBootVersion = providers.gradleProperty('springBootVersion').getOrElse('3.5.14')
+def springBootVersion = providers.gradleProperty('springBootVersion').getOrElse('4.1.0')
 
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
