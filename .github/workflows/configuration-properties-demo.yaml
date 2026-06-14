@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        spring-boot: ['3.5.14', '4.0.6']
+        spring-boot: ['3.5.15', '4.0.7', '4.1.0']
         java: ['17', '21', '25']
 
     defaults:
