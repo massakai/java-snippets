@@ -2,6 +2,12 @@
 
 Java / Spring Boot の小さな検証コード置き場です。
 
+## Documentation
+
+- [CONTRIBUTING.md](CONTRIBUTING.md): 貢献の進め方
+- [AGENTS.md](AGENTS.md): AI エージェント向けガイド
+- [docs/repository-guidelines.md](docs/repository-guidelines.md): リポジトリ共通方針
+
 ## Samples
 
 - `configuration-properties-demo`: `@ConfigurationProperties` のバインドと検証を確認するサンプル

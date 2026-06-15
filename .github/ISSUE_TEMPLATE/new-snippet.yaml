@@ -1,0 +1,48 @@
+name: New snippet
+description: 新しい検証サンプルや検証テーマを提案する
+title: "[snippet] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: なぜこのサンプルや検証が必要かを書いてください。
+      placeholder: ブログ記事や技術メモで確認したい前提、既存サンプルでは足りない点など
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: 確認したいこと
+      description: このサンプルで確認したい挙動や論点を書いてください。
+      placeholder: 例: Spring Boot 4 系での挙動差、設定値のバインド結果、起動時処理の制御
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 想定する構成
+      description: 想定するクラス、設定、エンドポイント、依存関係などがあれば書いてください。
+      placeholder: 例: Controller 1 つ、ConfigurationProperties 1 つ、テスト 2 ケース
+  - type: input
+    id: versions
+    attributes:
+      label: 対象バージョン
+      description: 対象の Spring Boot / Java バージョンがあれば書いてください。
+      placeholder: Spring Boot 3.5.14 / 4.0.6, Java 17 / 21
+  - type: textarea
+    id: article
+    attributes:
+      label: 関連記事やメモ
+      description: 関連する記事、メモ、Issue、外部リンクがあれば書いてください。
+      placeholder: 参照した記事 URL、関連 Issue、メモ書き
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: この Issue を閉じられる状態を具体的に書いてください。
+      placeholder: 例: サンプル追加、README 追加、対象バージョンでテスト完了
+    validations:
+      required: true

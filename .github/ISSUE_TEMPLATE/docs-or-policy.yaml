@@ -1,0 +1,38 @@
+name: Docs or policy
+description: README、運用ルール、テンプレートなどの改善を提案する
+title: "[docs] "
+labels:
+  - documentation
+body:
+  - type: textarea
+    id: target
+    attributes:
+      label: 対象
+      description: 見直したいドキュメントや運用箇所を書いてください。
+      placeholder: 例: README.md, CONTRIBUTING.md, docs/repository-guidelines.md, PR テンプレート
+    validations:
+      required: true
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: 現状の困りごと
+      description: 何が分かりにくいか、重複しているか、運用しづらいかを書いてください。
+      placeholder: 例: AI 向け指示と共通運用ルールが混在している
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 提案内容
+      description: どう変えたいかを書いてください。
+      placeholder: 例: CONTRIBUTING.md に移す、Issue テンプレートにする、README からリンクする
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: どの状態になれば完了とみなせるかを書いてください。
+      placeholder: 例: ドキュメントごとの責務が明文化され、テンプレートが追加されている
+    validations:
+      required: true
