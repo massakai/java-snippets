@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contribution guide
+    url: https://github.com/massakai/java-snippets/blob/master/CONTRIBUTING.md
+    about: Issue や Pull Request の前に、まずコントリビューションガイドを確認してください。
