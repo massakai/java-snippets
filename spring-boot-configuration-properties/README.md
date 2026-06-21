@@ -92,11 +92,9 @@ article:
 
 Java 25 はローカル環境に JDK がないため未実行です。GitHub Actions では `-PjavaVersion` で Gradle toolchain を切り替え、Java 17 / 21 / 25 と Spring Boot 3.5.15 / 4.1.0 の組み合わせで確認します。
 
-## Notes For Article
+## Notes
 
-- 記事に載せる最小コードでは、`main` メソッド、テスト、Gradle wrapper、CI workflow は省略できます。
 - このサンプルでは repository 単体で検証できるように、Gradle 設定、`application.yaml`、自動テスト、CI workflow を含めています。
-- 記事の validation 節では、`@Validated`、`@NotNull`、`@Min`、ネストした設定への `@Valid`、および `spring-boot-starter-validation` を最小コードに含めます。このサンプルは必須値不足、`page-size=0`、ネストした `retry.max-attempts=0` の起動失敗もテストします。
 - validation 違反時には `ConfigurationPropertiesBindException` の原因として `BindValidationException` が出て、対象 field と制約コードを確認できます。制約メッセージは実行ロケールにより変わるため、テストではメッセージ本文ではなく field と制約コードを検証しています。
 - `@Value` は単発の値を読むには手軽ですが、関連する複数設定やネスト構造を扱うと、キー文字列が分散しやすく型のまとまりも見えにくくなります。
 - `@ConfigurationProperties` なら prefix ごとに設定をまとめられ、`Duration` や `URI` などへの変換、ネストした構造、IDE 補完用 metadata と相性が良いです。
