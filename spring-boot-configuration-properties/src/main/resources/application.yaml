@@ -1,0 +1,12 @@
+article:
+  recommendation:
+    endpoint: https://example.internal/recommendations
+    page-size: 20
+    timeout: 750ms
+    cache:
+      enabled: true
+      ttl: 5m
+      max-entries: 1000
+    retry:
+      max-attempts: 3
+      initial-interval: 200ms
