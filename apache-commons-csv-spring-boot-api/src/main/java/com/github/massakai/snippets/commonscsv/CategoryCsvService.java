@@ -1,0 +1,122 @@
+package com.github.massakai.snippets.commonscsv;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CategoryCsvService {
+
+    private static final List<Category> SAMPLE_CATEGORIES = List.of(
+            new Category(1, "Books", "Books and magazines"),
+            new Category(2, "Games", "Video games and board games"),
+            new Category(3, "Kitchen", "Kitchen tools")
+    );
+
+    private static final CSVFormat EXPORT_FORMAT = CSVFormat.DEFAULT.builder()
+            .setHeader("id", "name", "description")
+            .setRecordSeparator("\n")
+            .get();
+
+    private static final CSVFormat IMPORT_FORMAT = CSVFormat.DEFAULT.builder()
+            .setHeader()
+            .setSkipHeaderRecord(true)
+            .setTrim(true)
+            .setIgnoreEmptyLines(true)
+            .get();
+
+    public String exportCategories() throws IOException {
+        StringWriter writer = new StringWriter();
+
+        try (CSVPrinter printer = EXPORT_FORMAT.print(writer)) {
+            for (Category category : SAMPLE_CATEGORIES) {
+                printer.printRecord(category.id(), category.name(), category.description());
+            }
+        }
+
+        return writer.toString();
+    }
+
+    public CategoryImportResponse importCategories(InputStream inputStream) throws IOException {
+        List<Category> categories = new ArrayList<>();
+        List<CsvImportError> errors = new ArrayList<>();
+        int totalRows = 0;
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+             CSVParser parser = IMPORT_FORMAT.parse(reader)) {
+            validateHeaders(parser.getHeaderMap(), errors);
+
+            if (!errors.isEmpty()) {
+                return new CategoryImportResponse(0, 0, 0, List.of(), errors);
+            }
+
+            for (CSVRecord record : parser) {
+                totalRows++;
+                List<CsvImportError> rowErrors = validateRecord(record);
+
+                if (rowErrors.isEmpty()) {
+                    categories.add(new Category(
+                            Integer.parseInt(record.get("id")),
+                            record.get("name"),
+                            record.get("description")
+                    ));
+                } else {
+                    errors.addAll(rowErrors);
+                }
+            }
+        }
+
+        return new CategoryImportResponse(
+                totalRows,
+                categories.size(),
+                totalRows - categories.size(),
+                List.copyOf(categories),
+                List.copyOf(errors)
+        );
+    }
+
+    private void validateHeaders(Map<String, Integer> headerMap, List<CsvImportError> errors) {
+        for (String header : List.of("id", "name", "description")) {
+            if (!headerMap.containsKey(header)) {
+                errors.add(new CsvImportError(1, header, "missing required header"));
+            }
+        }
+    }
+
+    private List<CsvImportError> validateRecord(CSVRecord record) {
+        List<CsvImportError> errors = new ArrayList<>();
+        int rowNumber = Math.toIntExact(record.getRecordNumber() + 1);
+        String id = record.get("id");
+        String name = record.get("name");
+
+        if (id.isBlank()) {
+            errors.add(new CsvImportError(rowNumber, "id", "must not be blank"));
+        } else {
+            try {
+                int parsedId = Integer.parseInt(id);
+                if (parsedId <= 0) {
+                    errors.add(new CsvImportError(rowNumber, "id", "must be a positive integer"));
+                }
+            } catch (NumberFormatException ex) {
+                errors.add(new CsvImportError(rowNumber, "id", "must be a positive integer"));
+            }
+        }
+
+        if (name.isBlank()) {
+            errors.add(new CsvImportError(rowNumber, "name", "must not be blank"));
+        }
+
+        return errors;
+    }
+}
