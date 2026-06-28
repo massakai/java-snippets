@@ -13,27 +13,27 @@ import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = {
-        "stub.responses.status=200",
-        "stub.responses.body={\"result\":\"ok\"}",
-        "stub.delays[0].weight=1",
-        "stub.delays[0].millis=0"
+    "stub.responses.status=200",
+    "stub.responses.body={\"result\":\"ok\"}",
+    "stub.delays[0].weight=1",
+    "stub.delays[0].millis=0"
 })
 class StubIntegrationTest {
 
-    @LocalServerPort
-    int port;
+  @LocalServerPort
+  int port;
 
-    @Test
-    void stubEndpointReturnsConfiguredResponse() throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:" + port + "/stub"))
-                .GET()
-                .build();
+  @Test
+  void stubEndpointReturnsConfiguredResponse() throws Exception {
+    final HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create("http://localhost:" + port + "/stub"))
+        .GET()
+        .build();
 
-        HttpResponse<String> response = HttpClient.newHttpClient()
-                .send(request, HttpResponse.BodyHandlers.ofString());
+    final HttpResponse<String> response = HttpClient.newHttpClient()
+        .send(request, HttpResponse.BodyHandlers.ofString());
 
-        assertThat(response.statusCode()).isEqualTo(200);
-        assertThat(response.body()).isEqualTo("{\"result\":\"ok\"}");
-    }
+    assertThat(response.statusCode()).isEqualTo(200);
+    assertThat(response.body()).isEqualTo("{\"result\":\"ok\"}");
+  }
 }

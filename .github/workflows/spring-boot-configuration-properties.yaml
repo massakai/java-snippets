@@ -38,5 +38,23 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Test
-        run: ./gradlew test -PspringBootVersion=${{ matrix.spring-boot }} -PjavaVersion=${{ matrix.java }}
+      - name: Check
+        id: gradle_check
+        continue-on-error: true
+        run: ./gradlew check -PspringBootVersion=${{ matrix.spring-boot }} -PjavaVersion=${{ matrix.java }}
+
+      - name: Annotate Checkstyle violations
+        if: always()
+        run: python3 ../scripts/annotate_checkstyle.py build/reports/checkstyle
+
+      - name: Upload Checkstyle reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spring-boot-configuration-properties-checkstyle-${{ matrix.spring-boot }}-java${{ matrix.java }}
+          path: |
+            spring-boot-configuration-properties/build/reports/checkstyle
+
+      - name: Fail on check errors
+        if: steps.gradle_check.outcome == 'failure'
+        run: exit 1

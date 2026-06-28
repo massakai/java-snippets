@@ -4,12 +4,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
+/** 旧 configuration properties サンプルのエントリーポイントです. */
 @SpringBootApplication
 @ConfigurationPropertiesScan
 public class ConfigurationPropertiesDemoApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ConfigurationPropertiesDemoApplication.class, args);
-    }
-
+  /**
+   * サンプルアプリケーションを起動します.
+   *
+   * @param args コマンドライン引数
+   */
+  public static void main(final String[] args) {
+    SpringApplication.run(ConfigurationPropertiesDemoApplication.class, args);
+  }
 }

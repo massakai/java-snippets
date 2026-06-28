@@ -1,0 +1,21 @@
+apply plugin: 'checkstyle'
+
+def repositoryRoot = rootProject.file('..')
+
+checkstyle {
+    toolVersion = '13.6.0'
+    configFile = repositoryRoot.toPath().resolve('config/checkstyle/checkstyle.xml').toFile()
+}
+
+tasks.withType(Checkstyle).configureEach {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+
+    maxWarnings = 0
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}

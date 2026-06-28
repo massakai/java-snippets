@@ -1,6 +1,6 @@
 package com.github.massakai.snippets.configurationpropertiesdemo.config;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,9 +13,9 @@ import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
 @TestPropertySource(properties = {
-    "demo.apiConfig.url = http://localhost/hoge",
-    "demo.apiConfig.connectionTimeout = 100ms",
-    "demo.apiConfig.readTimeout = 200ms"})
+  "demo.apiConfig.url = http://localhost/hoge",
+  "demo.apiConfig.connectionTimeout = 100ms",
+  "demo.apiConfig.readTimeout = 200ms"})
 class DemoPropertiesTest {
 
   @Autowired
@@ -28,9 +28,9 @@ class DemoPropertiesTest {
   }
 
   @Test
-  @DisplayName("APIConfigの値がアプリケーションプロパティから読み込まれる")
+  @DisplayName("ApiConfigの値がアプリケーションプロパティから読み込まれる")
   void getApiConfig() throws MalformedURLException {
-    APIConfig apiConfig = demoProperties.apiConfig();
+    final ApiConfig apiConfig = demoProperties.apiConfig();
 
     assertEquals(new URL("http://localhost/hoge"), apiConfig.url());
     assertEquals(Duration.ofMillis(100), apiConfig.connectionTimeout());
