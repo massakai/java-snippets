@@ -41,6 +41,8 @@ jobs:
       - name: Check
         id: gradle_check
         continue-on-error: true
+        env:
+          JAVA_OPTS: ${{ matrix.java == '25' && '--enable-native-access=ALL-UNNAMED' || '' }}
         run: ./gradlew check -PspringBootVersion=${{ matrix.spring-boot }} -PjavaVersion=${{ matrix.java }}
 
       - name: Annotate Checkstyle violations
