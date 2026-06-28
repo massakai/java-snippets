@@ -35,7 +35,7 @@ class CategoryControllerTest {
 
   @Test
   void exportCategoriesReturnsCsvAttachment() throws Exception {
-    String expectedCsv = String.join(
+    final String expectedCsv = String.join(
         "\n",
         "id,name,description",
         "1,Books,Books and magazines",
@@ -59,7 +59,7 @@ class CategoryControllerTest {
 
   @Test
   void importCategoriesReturnsParsedRowsAndValidationErrors() throws Exception {
-    String csvBody = String.join(
+    final String csvBody = String.join(
         "\n",
         "id,name,description",
         "10,Stationery,Pens and notebooks",
@@ -68,7 +68,7 @@ class CategoryControllerTest {
         "12,,missing name"
     ) + "\n";
 
-    MockMultipartFile file = new MockMultipartFile(
+    final MockMultipartFile file = new MockMultipartFile(
         "file",
         "categories.csv",
         MediaType.TEXT_PLAIN_VALUE,

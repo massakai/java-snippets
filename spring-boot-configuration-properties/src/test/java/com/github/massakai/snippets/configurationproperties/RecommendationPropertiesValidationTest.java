@@ -56,7 +56,10 @@ class RecommendationPropertiesValidationTest {
   }
 
   private void assertValidationFailure(
-      ApplicationContextRunner runner, String fieldName, String constraintCode) {
+      final ApplicationContextRunner runner,
+      final String fieldName,
+      final String constraintCode
+  ) {
     runner.run(context -> {
       assertThat(context).hasFailed();
       assertThat(context.getStartupFailure())

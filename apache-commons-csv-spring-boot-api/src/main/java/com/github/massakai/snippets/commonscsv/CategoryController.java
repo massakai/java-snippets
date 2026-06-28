@@ -25,7 +25,7 @@ public class CategoryController {
    *
    * @param categoryCsvService CSV の入出力を担当するサービス
    */
-  public CategoryController(CategoryCsvService categoryCsvService) {
+  public CategoryController(final CategoryCsvService categoryCsvService) {
     this.categoryCsvService = categoryCsvService;
   }
 
@@ -55,7 +55,7 @@ public class CategoryController {
    */
   @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
   public CategoryImportResponse importCategories(
-      @RequestParam("file") MultipartFile file
+      @RequestParam("file") final MultipartFile file
   ) throws IOException {
     return categoryCsvService.importCategories(file.getInputStream());
   }

@@ -12,7 +12,7 @@ public class ApplicationRunnerDisableApplication {
    *
    * @param args コマンドライン引数
    */
-  public static void main(String[] args) {
+  public static void main(final String[] args) {
     SpringApplication.run(ApplicationRunnerDisableApplication.class, args);
   }
 }

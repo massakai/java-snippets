@@ -17,7 +17,7 @@ public class StubController {
    *
    * @param properties スタブ API の設定値
    */
-  public StubController(StubProperties properties) {
+  public StubController(final StubProperties properties) {
     this.properties = properties;
   }
 
@@ -29,7 +29,7 @@ public class StubController {
    */
   @GetMapping("/stub")
   public ResponseEntity<String> stub() throws InterruptedException {
-    long delayMillis = chooseDelayMillis(properties.delays());
+    final long delayMillis = chooseDelayMillis(properties.delays());
     Thread.sleep(delayMillis);
 
     return ResponseEntity
@@ -37,12 +37,12 @@ public class StubController {
         .body(properties.responses().body());
   }
 
-  long chooseDelayMillis(List<DelayPattern> delays) {
+  long chooseDelayMillis(final List<DelayPattern> delays) {
     if (delays.isEmpty()) {
       throw new IllegalArgumentException("At least one delay pattern is required");
     }
 
-    int totalWeight = delays.stream()
+    final int totalWeight = delays.stream()
         .mapToInt(DelayPattern::weight)
         .sum();
 
@@ -50,7 +50,7 @@ public class StubController {
       throw new IllegalArgumentException("Total delay weight must be positive");
     }
 
-    int value = ThreadLocalRandom.current().nextInt(totalWeight);
+    final int value = ThreadLocalRandom.current().nextInt(totalWeight);
     int current = 0;
 
     for (DelayPattern delay : delays) {

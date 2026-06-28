@@ -44,7 +44,7 @@ public class CategoryCsvService {
    * @throws IOException CSV 出力に失敗した場合
    */
   public String exportCategories() throws IOException {
-    StringWriter writer = new StringWriter();
+    final StringWriter writer = new StringWriter();
 
     try (CSVPrinter printer = EXPORT_FORMAT.print(writer)) {
       for (Category category : SAMPLE_CATEGORIES) {
@@ -63,10 +63,10 @@ public class CategoryCsvService {
    * @throws IOException CSV の読み込みに失敗した場合
    */
   public CategoryImportResponse importCategories(
-      InputStream inputStream
+      final InputStream inputStream
   ) throws IOException {
-    List<Category> categories = new ArrayList<>();
-    List<CsvImportError> errors = new ArrayList<>();
+    final List<Category> categories = new ArrayList<>();
+    final List<CsvImportError> errors = new ArrayList<>();
     int totalRows = 0;
 
     try (
@@ -82,7 +82,7 @@ public class CategoryCsvService {
 
       for (CSVRecord record : parser) {
         totalRows++;
-        List<CsvImportError> rowErrors = validateRecord(record);
+        final List<CsvImportError> rowErrors = validateRecord(record);
 
         if (rowErrors.isEmpty()) {
           categories.add(new Category(
@@ -105,7 +105,10 @@ public class CategoryCsvService {
     );
   }
 
-  private void validateHeaders(Map<String, Integer> headerMap, List<CsvImportError> errors) {
+  private void validateHeaders(
+      final Map<String, Integer> headerMap,
+      final List<CsvImportError> errors
+  ) {
     for (String header : List.of("id", "name", "description")) {
       if (!headerMap.containsKey(header)) {
         errors.add(new CsvImportError(1, header, "missing required header"));
@@ -113,17 +116,17 @@ public class CategoryCsvService {
     }
   }
 
-  private List<CsvImportError> validateRecord(CSVRecord record) {
-    List<CsvImportError> errors = new ArrayList<>();
-    int rowNumber = Math.toIntExact(record.getRecordNumber() + 1);
-    String id = record.get("id");
-    String name = record.get("name");
+  private List<CsvImportError> validateRecord(final CSVRecord record) {
+    final List<CsvImportError> errors = new ArrayList<>();
+    final int rowNumber = Math.toIntExact(record.getRecordNumber() + 1);
+    final String id = record.get("id");
+    final String name = record.get("name");
 
     if (id.isBlank()) {
       errors.add(new CsvImportError(rowNumber, "id", "must not be blank"));
     } else {
       try {
-        int parsedId = Integer.parseInt(id);
+        final int parsedId = Integer.parseInt(id);
         if (parsedId <= 0) {
           errors.add(new CsvImportError(rowNumber, "id", "must be a positive integer"));
         }

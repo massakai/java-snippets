@@ -22,7 +22,7 @@ public class ImportApplicationRunner implements ApplicationRunner {
    *
    * @param importService 起動時に呼び出す取込サービス
    */
-  public ImportApplicationRunner(ImportService importService) {
+  public ImportApplicationRunner(final ImportService importService) {
     this.importService = importService;
   }
 
@@ -32,7 +32,7 @@ public class ImportApplicationRunner implements ApplicationRunner {
    * @param args アプリケーション起動引数
    */
   @Override
-  public void run(ApplicationArguments args) {
+  public void run(final ApplicationArguments args) {
     importService.execute();
   }
 }

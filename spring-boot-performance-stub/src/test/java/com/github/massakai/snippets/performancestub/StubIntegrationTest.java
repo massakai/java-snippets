@@ -25,12 +25,12 @@ class StubIntegrationTest {
 
   @Test
   void stubEndpointReturnsConfiguredResponse() throws Exception {
-    HttpRequest request = HttpRequest.newBuilder()
+    final HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create("http://localhost:" + port + "/stub"))
         .GET()
         .build();
 
-    HttpResponse<String> response = HttpClient.newHttpClient()
+    final HttpResponse<String> response = HttpClient.newHttpClient()
         .send(request, HttpResponse.BodyHandlers.ofString());
 
     assertThat(response.statusCode()).isEqualTo(200);

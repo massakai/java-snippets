@@ -15,14 +15,14 @@ class StubControllerTest {
 
   @Test
   void chooseDelayMillisReturnsConfiguredDelay() {
-    List<DelayPattern> delays = List.of(new DelayPattern(1, 123));
+    final List<DelayPattern> delays = List.of(new DelayPattern(1, 123));
 
     assertThat(controller.chooseDelayMillis(delays)).isEqualTo(123);
   }
 
   @Test
   void chooseDelayMillisReturnsOneOfConfiguredDelays() {
-    List<DelayPattern> delays = List.of(
+    final List<DelayPattern> delays = List.of(
         new DelayPattern(90, 100),
         new DelayPattern(9, 500),
         new DelayPattern(1, 2000)
@@ -40,7 +40,7 @@ class StubControllerTest {
 
   @Test
   void chooseDelayMillisRejectsNonPositiveTotalWeight() {
-    List<DelayPattern> delays = List.of(new DelayPattern(0, 100), new DelayPattern(0, 500));
+    final List<DelayPattern> delays = List.of(new DelayPattern(0, 100), new DelayPattern(0, 500));
 
     assertThatIllegalArgumentException()
         .isThrownBy(() -> controller.chooseDelayMillis(delays))
