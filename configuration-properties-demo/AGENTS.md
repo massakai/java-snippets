@@ -6,7 +6,7 @@
 
 ## Test Focus
 
-- `DemoProperties` と `APIConfig` に URL と `Duration` を正しく束縛できること
+- `DemoProperties` と `ApiConfig` に URL と `Duration` を正しく束縛できること
 - Bean Validation を有効にしたままアプリケーションコンテキストを起動できること
 
 ## Run Commands
@@ -19,7 +19,7 @@
 
 ## Naming Consistency Notes
 
-- 記事やメモでは `DemoProperties`、`APIConfig`、`demo.api-config` の表記ずれに注意する
+- 記事やメモでは `DemoProperties`、`ApiConfig`、`demo.api-config` の表記ずれに注意する
 - Spring Boot の確認対象は `3.5.15` / `4.0.7` / `4.1.0`
 
 ## CI

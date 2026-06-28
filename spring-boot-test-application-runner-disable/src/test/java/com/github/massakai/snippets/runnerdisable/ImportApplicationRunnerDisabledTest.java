@@ -9,11 +9,11 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 @SpringBootTest(properties = "startup.import.enabled=false")
 class ImportApplicationRunnerDisabledTest {
 
-    @MockitoBean
-    private ImportService importService;
+  @MockitoBean
+  private ImportService importService;
 
-    @Test
-    void runnerDoesNotRunWhenDisabled() {
-        verifyNoInteractions(importService);
-    }
+  @Test
+  void runnerDoesNotRunWhenDisabled() {
+    verifyNoInteractions(importService);
+  }
 }

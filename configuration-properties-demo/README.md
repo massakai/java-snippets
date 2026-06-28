@@ -7,7 +7,7 @@ Deprecated: このサンプルは新規用途には使わず、`spring-boot-conf
 
 ## 内容
 
-- `DemoProperties` と `APIConfig` を record で定義する
+- `DemoProperties` と `ApiConfig` を record で定義する
 - `@ConfigurationPropertiesScan` で設定クラスを自動検出する
 - URL と `Duration` のバインドをテストで確認する
 
