@@ -4,6 +4,8 @@ plugins {
     id 'io.spring.dependency-management'
 }
 
+apply from: rootProject.file('../gradle/checkstyle.gradle')
+
 group = 'com.github.massakai.snippets'
 version = '0.0.1-SNAPSHOT'
 
