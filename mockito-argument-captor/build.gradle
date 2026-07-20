@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+apply {
+    from(rootProject.file('../gradle/checkstyle.gradle'))
+}
+
+group = 'com.github.massakai.snippets'
+version = '0.0.1-SNAPSHOT'
+
+def javaVersion = providers.gradleProperty('javaVersion')
+        .map(Integer::parseInt)
+        .getOrElse(25)
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.12.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.23.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
