@@ -10,4 +10,4 @@ Spring Bootで性能テスト用の遅延レスポンスを返すスタブAPIの
 ./gradlew test -PspringBootVersion=4.1.0
 ```
 
-GitHub Actionsでは、Gradle wrapper 9.5.1を使ってSpring Boot 3.5.15 / 4.0.7 / 4.1.0 と Java 17 / 21 / 25 の組み合わせでテストします。
+GitHub Actionsでは、Gradle wrapper 9.9.2を使ってSpring Boot 3.5.15 / 4.0.7 / 4.1.0 と Java 17 / 21 / 25 の組み合わせでテストします。
