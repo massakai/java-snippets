@@ -7,9 +7,13 @@ apply from: rootProject.file('../gradle/checkstyle.gradle')
 group = 'com.github.massakai.snippets'
 version = '0.0.1-SNAPSHOT'
 
+def javaVersion = providers.gradleProperty('javaVersion')
+        .map { Integer.parseInt(it) }
+        .getOrElse(17)
+
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(javaVersion)
     }
 }
 
@@ -17,7 +21,7 @@ repositories {
     mavenCentral()
 }
 
-def springBootVersion = providers.gradleProperty('springBootVersion').getOrElse('4.1.0')
+def springBootVersion = providers.gradleProperty('springBootVersion').getOrElse('4.2.0')
 
 dependencies {
     implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
@@ -25,8 +29,8 @@ dependencies {
     testImplementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

@@ -30,6 +30,9 @@
 - 設定ファイルの YAML 拡張子は `.yaml` に統一する
 - `application.yml` や workflow の `.yml` は使わず、`.yaml` を使う
 - Spring Boot のバージョン差を確認する場合は、Gradle プロパティや README に検証対象を明記する
+- Spring Boot サンプルは 4.0.10 / 4.1.3 / 4.2.0 を検証対象とし、既定値は 4.2.0 にする
+- `-PspringBootVersion` で Spring Boot、`-PjavaVersion` で Java toolchain を選択する
+- Spring Boot サンプルの CI は Java 17 / 21 / 25 との全9通りを `check --warning-mode=fail` で検証する
 - テストで挙動を示せる場合は、できるだけ自動テストとして残す
 
 ## Testing And CI

@@ -12,16 +12,16 @@
 ## Run Commands
 
 ```bash
-./gradlew test -PspringBootVersion=3.5.15
-./gradlew test -PspringBootVersion=4.0.7
-./gradlew test -PspringBootVersion=4.1.0
+./gradlew test -PspringBootVersion=4.0.10
+./gradlew test -PspringBootVersion=4.1.3
+./gradlew test -PspringBootVersion=4.2.0
 ```
 
 ## Naming Consistency Notes
 
 - 記事やメモでは `DemoProperties`、`ApiConfig`、`demo.api-config` の表記ずれに注意する
-- Spring Boot の確認対象は `3.5.15` / `4.0.7` / `4.1.0`
+- Spring Boot の確認対象は `4.0.10` / `4.1.3` / `4.2.0`
 
 ## CI
 
-- GitHub Actions で Spring Boot `3.5.15` / `4.0.7` / `4.1.0` と Java `17` / `21` / `25` の組み合わせをテストする
+- GitHub Actions で Spring Boot `4.0.10` / `4.1.3` / `4.2.0` と Java `17` / `21` / `25` の組み合わせをテストする

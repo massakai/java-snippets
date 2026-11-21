@@ -14,7 +14,7 @@ repositories {
 def javaVersion = providers.gradleProperty('javaVersion')
         .map { Integer.parseInt(it) }
         .getOrElse(17)
-def springBootVersion = providers.gradleProperty('springBootVersion').getOrElse('3.5.15')
+def springBootVersion = providers.gradleProperty('springBootVersion').getOrElse('4.2.0')
 
 java {
     toolchain {

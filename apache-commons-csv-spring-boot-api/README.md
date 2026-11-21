@@ -134,7 +134,7 @@ sequenceDiagram
 ## Run Application
 
 ```bash
-./gradlew bootRun -PspringBootVersion=3.5.14
+./gradlew bootRun -PspringBootVersion=4.0.10
 ```
 
 起動後、`http://localhost:8080` で API を確認できます。
@@ -166,10 +166,17 @@ id,name,description
 
 ## Run Tests
 
+Web MVC の実装には `spring-boot-starter-webmvc`、テストには `spring-boot-starter-webmvc-test` を使用します。
+`@SpringBootTest` と `@AutoConfigureMockMvc` で自動構成した `MockMvc` を注入し、アプリケーション全体の構成で API を検証します。
+
 ```bash
-./gradlew test -PspringBootVersion=3.5.14
-./gradlew test -PspringBootVersion=4.0.6
-./gradlew test -PspringBootVersion=4.1.0
+./gradlew test -PspringBootVersion=4.0.10
+./gradlew test -PspringBootVersion=4.1.3
+./gradlew test -PspringBootVersion=4.2.0
 ```
 
-GitHub Actionsでは、Gradle wrapper 9.9.2を使ってSpring Boot 3.5.14 / 4.0.6 / 4.1.0 と Java 17 / 21 / 25 の組み合わせでテストします。
+GitHub Actionsでは、Gradle wrapper 9.9.2を使ってSpring Boot 4.0.10 / 4.1.3 / 4.2.0 と Java 17 / 21 / 25 の組み合わせでテストします。
+
+Spring Boot Gradle プラグインは、Gradle 9.9.2 で非推奨警告が出る `Configuration.setVisible()` を呼び出さない 4.2.0 を使用します。
+`springBootVersion` はアプリケーションとテストの依存関係を管理する BOM に適用し、プラグインのバージョンとは分けて指定します。
+`bootRun` と `bootJar` は引き続き利用できます。

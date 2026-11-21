@@ -8,14 +8,14 @@
 
 - `startup.import.enabled` の有効 / 無効で `ImportApplicationRunner` の動作が切り替わること
 - `ImportService` の呼び出し有無をテストで確認できること
-- Spring Boot 3.5.15 / 4.0.7 / 4.1.0 でテストが通ること
+- Spring Boot 4.0.10 / 4.1.3 / 4.2.0 でテストが通ること
 
 ## Run Commands
 
 ```bash
-./gradlew test -PspringBootVersion=3.5.15
-./gradlew test -PspringBootVersion=4.0.7
-./gradlew test -PspringBootVersion=4.1.0
+./gradlew test -PspringBootVersion=4.0.10
+./gradlew test -PspringBootVersion=4.1.3
+./gradlew test -PspringBootVersion=4.2.0
 ```
 
 ## Related Article
@@ -29,4 +29,4 @@
 
 ## CI
 
-- `.github/workflows/spring-boot-test-application-runner-disable.yaml` で Java 17 / 21 / 25 と Spring Boot 3.5.15 / 4.0.7 / 4.1.0 を検証する
+- `.github/workflows/spring-boot-test-application-runner-disable.yaml` で Java 17 / 21 / 25 と Spring Boot 4.0.10 / 4.1.3 / 4.2.0 を検証する

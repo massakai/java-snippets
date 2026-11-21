@@ -2,7 +2,7 @@
 
 ## Purpose
 
-- Spring Boot 3.5.x / 4.1.0 で `record` に `@ConfigurationProperties` を付けた設定バインドを確認する
+- Spring Boot 4.0.10 / 4.1.3 / 4.2.0 で `record` に `@ConfigurationProperties` を付けた設定バインドを確認する
 
 ## Test Focus
 
@@ -14,9 +14,10 @@
 ## Run Commands
 
 ```bash
-./gradlew test -PspringBootVersion=3.5.15
-./gradlew test -PspringBootVersion=4.1.0
-./gradlew test -PspringBootVersion=4.1.0 -PjavaVersion=21
+./gradlew test -PspringBootVersion=4.0.10
+./gradlew test -PspringBootVersion=4.1.3
+./gradlew test -PspringBootVersion=4.2.0
+./gradlew test -PspringBootVersion=4.2.0 -PjavaVersion=21
 ```
 
 ## Related Article
@@ -30,4 +31,4 @@
 
 ## CI
 
-- `.github/workflows/spring-boot-configuration-properties.yaml` で `-PjavaVersion` による Gradle toolchain 切り替えを使い、Java 17 / 21 / 25 と Spring Boot 3.5.15 / 4.1.0 を検証する
+- `.github/workflows/spring-boot-configuration-properties.yaml` で `-PjavaVersion` による Gradle toolchain 切り替えを使い、Java 17 / 21 / 25 と Spring Boot 4.0.10 / 4.1.3 / 4.2.0 を検証する

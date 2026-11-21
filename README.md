@@ -12,7 +12,7 @@ Java / Spring Boot の小さな検証コード置き場です。
 
 - `apache-commons-csv-spring-boot-api`: Spring Boot + Apache Commons CSV の CSV export/import API
 - `configuration-properties-demo`: Deprecated. 旧名称として残している `@ConfigurationProperties` サンプル。現行用途は `spring-boot-configuration-properties` を参照
-- `spring-boot-configuration-properties`: 現行サンプル。Spring Boot 3.5.x / 4.1.0 の `record` ベース `@ConfigurationProperties` 検証
+- `spring-boot-configuration-properties`: Spring Boot 4.0.10 / 4.1.3 / 4.2.0 の `record` ベース `@ConfigurationProperties` を検証する現行サンプル
 - `spring-boot-performance-stub`: 性能テスト用の遅延レスポンスを返すSpring BootスタブAPI
 - `spring-boot-test-application-runner-disable`: `@SpringBootTest` で `ApplicationRunner` が動く挙動の確認
 - `mockito-argument-captor`: Mockito `ArgumentCaptor` でリポジトリへ渡す値を検証する JUnit 5 サンプル
