@@ -17,7 +17,7 @@ body:
     attributes:
       label: 確認したいこと
       description: このサンプルで確認したい挙動や論点を書いてください。
-      placeholder: 例: Spring Boot 4 系での挙動差、設定値のバインド結果、起動時処理の制御
+      placeholder: "例: Spring Boot 4 系での挙動差、設定値のバインド結果、起動時処理の制御"
     validations:
       required: true
   - type: textarea
@@ -25,13 +25,13 @@ body:
     attributes:
       label: 想定する構成
       description: 想定するクラス、設定、エンドポイント、依存関係などがあれば書いてください。
-      placeholder: 例: Controller 1 つ、ConfigurationProperties 1 つ、テスト 2 ケース
+      placeholder: "例: Controller 1 つ、ConfigurationProperties 1 つ、テスト 2 ケース"
   - type: input
     id: versions
     attributes:
       label: 対象バージョン
       description: 対象の Spring Boot / Java バージョンがあれば書いてください。
-      placeholder: Spring Boot 3.5.14 / 4.0.6, Java 17 / 21
+      placeholder: Spring Boot 4.0.10 / 4.1.3 / 4.2.0, Java 17 / 21
   - type: textarea
     id: article
     attributes:
@@ -43,6 +43,6 @@ body:
     attributes:
       label: 完了条件
       description: この Issue を閉じられる状態を具体的に書いてください。
-      placeholder: 例: サンプル追加、README 追加、対象バージョンでテスト完了
+      placeholder: "例: サンプル追加、README 追加、対象バージョンでテスト完了"
     validations:
       required: true

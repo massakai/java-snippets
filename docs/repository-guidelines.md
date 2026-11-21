@@ -25,10 +25,14 @@
 ## Spring Boot Samples
 
 - Gradle プロジェクトには Gradle wrapper を置き、原則として `gradle` ではなく `./gradlew` で実行する
-- Gradle wrapper のバージョンは原則 9.5.1 に揃え、変更する場合は README や workflow に理由を残す
+- Gradle wrapper のバージョンは原則 9.9.2 に揃え、変更する場合は README や workflow に理由を残す
+- Gradle 9.9.2 は、SSL 接続エラー後の依存解決に関する脆弱性（[GHSA-j5m7-59rp-24f5](https://github.com/gradle/gradle/security/advisories/GHSA-j5m7-59rp-24f5)）の修正を含む安定版として採用する
 - 設定ファイルの YAML 拡張子は `.yaml` に統一する
 - `application.yml` や workflow の `.yml` は使わず、`.yaml` を使う
 - Spring Boot のバージョン差を確認する場合は、Gradle プロパティや README に検証対象を明記する
+- Spring Boot サンプルは 4.0.10 / 4.1.3 / 4.2.0 を検証対象とし、既定値は 4.2.0 にする
+- `-PspringBootVersion` で Spring Boot、`-PjavaVersion` で Java toolchain を選択する
+- Spring Boot サンプルの CI は Java 17 / 21 / 25 との全9通りを `check --warning-mode=fail` で検証する
 - テストで挙動を示せる場合は、できるだけ自動テストとして残す
 
 ## Testing And CI

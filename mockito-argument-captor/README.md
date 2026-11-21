@@ -33,5 +33,5 @@ Java 17 / 21 / 25 を明示して検証する場合は、`javaVersion` プロパ
 `verify` の引数として `capture()` し、1 回の呼び出しでは `getValue()`、複数回の呼び出しでは
 `getAllValues()` から保存対象を取得します。
 
-GitHub Actions では、Gradle wrapper 9.5.1 を使って Java 17 / 21 / 25 を toolchain として
-指定し、`check` を実行します。既定 toolchain は Java 25 です。
+GitHub Actions では、Gradle wrapper 9.9.2 を使って Java 17 / 21 / 25 を toolchain として指定し、`check` を実行します。
+既定 toolchain は Java 25 です。

@@ -1,6 +1,6 @@
 # Spring Boot Configuration Properties
 
-Spring Boot 3.5.x と 4.1.0 で、`@ConfigurationProperties` を付けた `record` に YAML の設定値を bind する最小サンプルです。
+Spring Boot 4.0.10 / 4.1.3 / 4.2.0 で、`@ConfigurationProperties` を付けた `record` に YAML の設定値を bind する最小サンプルです。
 
 ## What This Sample Verifies
 
@@ -75,22 +75,18 @@ article:
 
 ```bash
 ./gradlew test
-./gradlew test -PspringBootVersion=3.5.15
-./gradlew test -PspringBootVersion=4.1.0
-./gradlew test -PspringBootVersion=3.5.15 -PjavaVersion=21
-./gradlew test -PspringBootVersion=4.1.0 -PjavaVersion=21
+./gradlew test -PspringBootVersion=4.0.10
+./gradlew test -PspringBootVersion=4.1.3
+./gradlew test -PspringBootVersion=4.2.0
+./gradlew test -PspringBootVersion=4.0.10 -PjavaVersion=21
+./gradlew test -PspringBootVersion=4.1.3 -PjavaVersion=21
+./gradlew test -PspringBootVersion=4.2.0 -PjavaVersion=21
 ```
 
 ## Verified Matrix
 
-ローカルでは次の組み合わせで確認します。
-
-- Java 17 / Spring Boot 3.5.15
-- Java 17 / Spring Boot 4.1.0
-- Java 21 / Spring Boot 3.5.15
-- Java 21 / Spring Boot 4.1.0
-
-Java 25 はローカル環境に JDK がないため未実行です。GitHub Actions では `-PjavaVersion` で Gradle toolchain を切り替え、Java 17 / 21 / 25 と Spring Boot 3.5.15 / 4.1.0 の組み合わせで確認します。
+ローカルと GitHub Actions では、Java 17 / 21 / 25 と Spring Boot 4.0.10 / 4.1.3 / 4.2.0 の全9通りを検証します。
+`-PjavaVersion` で Gradle toolchain を切り替えます。
 
 ## Notes
 
@@ -98,7 +94,7 @@ Java 25 はローカル環境に JDK がないため未実行です。GitHub Act
 - validation 違反時には `ConfigurationPropertiesBindException` の原因として `BindValidationException` が出て、対象 field と制約コードを確認できます。制約メッセージは実行ロケールにより変わるため、テストではメッセージ本文ではなく field と制約コードを検証しています。
 - `@Value` は単発の値を読むには手軽ですが、関連する複数設定やネスト構造を扱うと、キー文字列が分散しやすく型のまとまりも見えにくくなります。
 - `@ConfigurationProperties` なら prefix ごとに設定をまとめられ、`Duration` や `URI` などへの変換、ネストした構造、IDE 補完用 metadata と相性が良いです。
-- `record` の単一コンストラクタは Spring Boot 3.5.x / 4.1.0 では `@ConstructorBinding` なしで bind できます。
+- `record` の単一コンストラクタは Spring Boot 4.0.10 / 4.1.3 / 4.2.0 では `@ConstructorBinding` なしで bind できます。
 - 補完用 metadata は `./gradlew compileJava` 後に `build/classes/java/main/META-INF/spring-configuration-metadata.json` に生成されます。
 
 ## Pitfalls

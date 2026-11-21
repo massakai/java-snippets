@@ -8,14 +8,14 @@
 
 - `StubController` のレスポンス内容
 - `StubProperties` による遅延設定の反映
-- Spring Boot 3.5.15 / 4.0.7 / 4.1.0 でテストが通ること
+- Spring Boot 4.0.10 / 4.1.3 / 4.2.0 でテストが通ること
 
 ## Run Commands
 
 ```bash
-./gradlew test -PspringBootVersion=3.5.15
-./gradlew test -PspringBootVersion=4.0.7
-./gradlew test -PspringBootVersion=4.1.0
+./gradlew test -PspringBootVersion=4.0.10
+./gradlew test -PspringBootVersion=4.1.3
+./gradlew test -PspringBootVersion=4.2.0
 ```
 
 ## Related Article
@@ -25,8 +25,8 @@
 ## Naming Consistency Notes
 
 - 記事やメモでは `DelayPattern`、`StubController`、`StubProperties`、`StubResponse` の表記ずれに注意する
-- Spring Boot バージョンは `3.5.15` / `4.0.7` / `4.1.0` を明記する
+- Spring Boot バージョンは `4.0.10` / `4.1.3` / `4.2.0` を明記する
 
 ## CI
 
-- `.github/workflows/spring-boot-performance-stub.yaml` で Java 17 / 21 / 25 と Spring Boot 3.5.15 / 4.0.7 / 4.1.0 を検証する
+- `.github/workflows/spring-boot-performance-stub.yaml` で Java 17 / 21 / 25 と Spring Boot 4.0.10 / 4.1.3 / 4.2.0 を検証する

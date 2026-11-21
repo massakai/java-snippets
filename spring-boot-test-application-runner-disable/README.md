@@ -12,7 +12,7 @@
 ## Run Tests
 
 ```bash
-./gradlew test -PspringBootVersion=3.5.15
-./gradlew test -PspringBootVersion=4.0.7
-./gradlew test -PspringBootVersion=4.1.0
+./gradlew test -PspringBootVersion=4.0.10
+./gradlew test -PspringBootVersion=4.1.3
+./gradlew test -PspringBootVersion=4.2.0
 ```
